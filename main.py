@@ -7,13 +7,13 @@
 """
 
 import encode
-import decode
 
 if __name__ == '__main__':
     # 加密
-    '''
-    my_enigma = encode.EnigmaRotor
+    my_enigma = encode.EnigmaRotor()
     encode.EnigmaRotor.encode(my_enigma)
+    # encode.EnigmaRotor.text(my_enigma)
     '''
     my_enigma = decode.EnigmaDecode
     decode.EnigmaDecode.read_info(my_enigma)
+'''

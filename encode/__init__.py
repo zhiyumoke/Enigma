@@ -12,10 +12,26 @@ import pickle
 
 class EnigmaRotor:
     # 转子定义初始化
-    gear1 = np.zeros(shape=(2, 26))
-    gear2 = np.zeros(shape=(2, 26))
-    gear3 = np.zeros(shape=(2, 26))
-    reflector = np.zeros(shape=(2, 13))
+    gear1 = np.array(
+        [[24, 25, 26, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+         [21, 3, 15, 1, 19, 10, 14, 26, 20, 8, 16, 7, 22, 4, 11, 5, 17, 9, 12, 23, 18, 2, 25, 6, 24, 13]],
+        dtype=int)  # 慢转子
+    gear2 = np.array(
+        [[26, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+         [20, 1, 6, 4, 15, 3, 14, 12, 23, 5, 16, 2, 22, 19, 11, 18, 25, 24, 13, 7, 10, 8, 21, 9, 26, 17]],
+        dtype=int)  # 中转子
+    gear3 = np.array(  # 快转子
+        [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26],
+         [8, 18, 26, 17, 20, 22, 10, 3, 13, 11, 4, 23, 5, 24, 9, 12, 25, 16, 19, 6, 15, 21, 2, 7, 1, 14]],
+        dtype=int)
+    reflector = np.array(
+        [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+         [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]], dtype=int
+    )
+    # gear1 = np.zeros(shape=(2, 26))
+    # gear2 = np.zeros(shape=(2, 26))
+    # gear3 = np.zeros(shape=(2, 26))
+    # reflector = np.zeros(shape=(2, 13))
 
     # 三个转子的起始位置
     gear1_num = []
@@ -40,9 +56,9 @@ class EnigmaRotor:
 
     def __init__(self):
         self.plaintext = input("input you plaintext:")
-        self.length = len(self.plaintext)
         self.ciphertext = list(self.ciphertext)  # 初始化密文
         self.plaintext = list(self.plaintext)  # 初始化明文
+        self.length = len(self.plaintext)
         self.read_info()
         self.transcoding()
 
